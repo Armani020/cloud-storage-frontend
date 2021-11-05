@@ -1,3 +1,3 @@
 # Cloud Storage:
-  - FrontEnd = React.js
-  - BackEnd = Java Spring
+  ## FrontEnd = React.js
+  ## BackEnd = Java Spring
