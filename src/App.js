@@ -13,7 +13,6 @@ function App() {
                         <Route path="/registration" element={<Registration/>}/>
                     </Routes>
                 </div>
-
             </div>
         </BrowserRouter>
     );
