@@ -3,7 +3,6 @@ import {Button, CssBaseline, TableBody, TableCell, TableRow} from "@mui/material
 import {Delete, FileCopy, FileDownloadOutlined, Folder} from "@mui/icons-material";
 import {useDispatch, useSelector} from "react-redux";
 import {pushToStack, setCurrentDir} from "../../reducers/fileReducer";
-import './btn.css'
 import {deleteFile, downloadFile} from "../../actions/file";
 
 const File = ({file}) => {
