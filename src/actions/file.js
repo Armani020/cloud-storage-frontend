@@ -55,7 +55,7 @@ export function uploadFile(file, dirId) {
             });
             dispatch(addFile(response.data))
         } catch (e) {
-            alert(e.response.message)
+            alert(e.response)
         }
     }
 }
@@ -86,9 +86,9 @@ export function deleteFile(file) {
                 headers: {Authorization: `Bearer ${localStorage.getItem('access_token')}`}
             })
             dispatch(deleteFileAction(file.id))
-            alert(response.data.message)
+            alert(response.data)
         } catch (e) {
-            alert(e)
+            alert(e.response.data)
         }
     }
 }

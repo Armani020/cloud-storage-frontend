@@ -7,7 +7,7 @@ const FileList = () => {
 
     const columns = [
         {id: 'icon', label: 'Icon', align: 'center'},
-        {id: 'name', label: 'Name', minWidth: 170},
+        {id: 'name', label: 'Name'},
         {
             id: 'date',
             label: 'Date',
@@ -32,7 +32,7 @@ const FileList = () => {
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
     const files = useSelector(state => state.files.files)
-    files.map(file => rows.push('1'))//<File file={file} key={file.id}/>)
+    files.map(file => rows.push(file))//<File file={file} key={file.id}/>)
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);

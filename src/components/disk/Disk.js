@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getFiles, uploadFile} from "../../actions/file";
-import {Box, Button, Container, Input, Typography} from "@mui/material";
+import {Box, Button, CircularProgress, Container, Input, LinearProgress, Typography} from "@mui/material";
 import {ArrowBack, CreateNewFolder, Upload} from "@mui/icons-material";
 import FileList from "./FileList";
 import Popup from "./Popup";
 import {setCurrentDir} from "../../reducers/fileReducer";
 import styled from "@emotion/styled";
+import {percent} from "../../utils/sizeFormatter";
 
 const Disk = () => {
+    const userSpace = useSelector(state => state.user.currentUser.usedSpace)
     const [open, setOpen] = useState(false);
     const [openDrag, setOpenDrag] = useState(false)
     const dispatch = useDispatch()
@@ -69,19 +71,23 @@ const Disk = () => {
                        onDragLeave={dragLeaveHandler}
                        onDragOver={dragEnterHandler}>
                 <Box>
-                    <Button size={"large"} sx={{marginRight: 3}} onClick={() => backClickHandler()}>
+                    <Button size={"large"} sx={{ marginRight: 3, marginBottom: 2 }} onClick={() => backClickHandler()}>
                         <ArrowBack/>
                     </Button>
-                    <Button sx={{marginRight: 3}} onClick={handleClickOpen}>
+                    <Button sx={{ marginRight: 3, marginBottom: 2 }} onClick={handleClickOpen}>
                         <CreateNewFolder/>
                     </Button>
                     <label htmlFor="contained-button-file">
                         <Input id="contained-button-file" multiple type="file"
                                onChange={(event) => fileUploadHandler(event)}/>
-                        <Button component="span">
+                        <Button component="span" sx={{ marginBottom: 2 }}>
                             <Upload/>
                         </Button>
                     </label>
+                    {/*<Box sx={{ width: '100%' }}>*/}
+                    {/*    //{userSpace}*/}
+                    <CircularProgress variant="determinate" value={percent(userSpace)} />
+                    {/*</Box>*/}
                     <FileList/>
                     <Popup open={open} setOpen={setOpen}/>
                 </Box>

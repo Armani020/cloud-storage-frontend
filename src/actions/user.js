@@ -8,9 +8,11 @@ export const registration = async (email, password) => {
             email,
             password
         })
-        alert(response.data.message)
+        console.log(response.data)
+        alert(response.data)
     } catch (e) {
-        alert(e);
+        console.log(e.response.data)
+        alert(e.response.data);
     }
 }
 
@@ -27,7 +29,8 @@ export const login = (email, password) => {
             console.log(response.data)
             dispatch(auth())
         } catch (e) {
-            alert(e);
+            //alert(e.response.data);
+            alert("Log in error")
         }
     }
 }
@@ -43,7 +46,9 @@ export const auth = () => {
             dispatch(setUser(response.data))
             //localStorage.setItem('access_token', )
         } catch (e) {
-            alert(e.data)
+            //console.log(e.response.data.error_message)
+            //alert(e.response.data.error_message)
+            alert("You are not authorized")
             localStorage.removeItem('access_token')
             localStorage.removeItem('refresh_token')
         }
